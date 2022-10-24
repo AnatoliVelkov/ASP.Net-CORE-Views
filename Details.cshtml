@@ -1,0 +1,49 @@
+﻿@model AdFinityCRM.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-center text-primary">Продукти</h1>
+<hr />
+
+<h4>Детайли за продукта</h4>
+<hr />
+<div>
+    <dl class="row">
+        <dt class="col-sm-2 font-weight-bold mb-2">
+            Име:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2 font-weight-bold mb-2">
+            Артикулен номер:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ArticleNumber)
+        </dd>
+        <dt class="col-sm-2 font-weight-bold mb-2">
+            Категория:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt class="col-sm-2 font-weight-bold mb-2">
+            Мерна единица:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Unit)
+        </dd>
+        <dt class="col-sm-2 font-weight-bold mb-2">
+            Единична цена:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PriceForUnit)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.ID">Редактирай</a> |
+    <a class="btn btn-primary" asp-action="Index">Назад</a>
+</div>

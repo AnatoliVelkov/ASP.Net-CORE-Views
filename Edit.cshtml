@@ -1,0 +1,68 @@
+﻿@model AdFinityCRM.Models.Product
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-center text-primary">Продукти</h1>
+<hr />
+
+<h4>Редактиране на продукт</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Име</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ArticleNumber" class="control-label">Артикулен номер</label>
+                <span class="text-info">При невъведен артикулен номер, ще се генерира автоматично!</span>
+                <input asp-for="ArticleNumber" class="form-control" />
+                <span asp-validation-for="ArticleNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label">Категория</label>
+                <select asp-for="Category" class="form-control">
+                    <option value="@Model.Category">@Model.ArticleNumber.ToString()</option>
+                    @foreach (var item in ViewBag.Categories)
+                    {
+                        <option value="@item">@item</option>
+                    }
+
+                </select>
+                <span asp-validation-for="Unit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Unit" class="control-label">Мерна единица</label>
+                <select asp-for="Unit" class="form-control">
+                    <option selected>Изберете мерна единица</option>
+                    <option value="бр">бр</option>
+                    <option value="метър">метър</option>
+                    <option value="кг">кг</option>
+                    <option value="опаковка">опаковка</option>
+                </select>
+                <span asp-validation-for="Unit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceForUnit" class="control-label">Единична цена</label>
+                <input type="number" asp-for="PriceForUnit" class="form-control" />
+                <span asp-validation-for="PriceForUnit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Запис" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Назад</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
